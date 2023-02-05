@@ -1,7 +1,9 @@
 let express = require('express');
 let path = require('path');
 let fs = require('fs');
+// (1) With MongoClient
 let MongoClient = require('mongodb').MongoClient;
+// ---
 let bodyParser = require('body-parser');
 let app = express();
 
@@ -20,40 +22,34 @@ app.get('/profile-picture', function (req, res) {
   res.end(img, 'binary');
 });
 
-// use when starting application locally
+// (1) With MongoClient
 let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
-
-// pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
+let mongoUrlDocker = "mongodb://admin:password@mongodb";
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
-
-// "user-account" in demo with docker. "my-db" in demo with docker-compose
 let databaseName = "my-db";
+// ---
 
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
-
+  // (1) With MongoClient
   MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
     if (err) throw err;
-
     let db = client.db(databaseName);
     userObj['userid'] = 1;
-
     let myquery = { userid: 1 };
     let newvalues = { $set: userObj };
-
     db.collection("users").updateOne(myquery, newvalues, {upsert: true}, function(err, res) {
       if (err) throw err;
       client.close();
     });
-
   });
-  // Send response
+ // ---
   res.send(userObj);
 });
 
 app.get('/get-profile', function (req, res) {
   let response = {};
-  // Connect to the db
+  // (1) With MongoClient
   MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
     if (err) throw err;
 
@@ -70,6 +66,8 @@ app.get('/get-profile', function (req, res) {
       res.send(response ? response : {});
     });
   });
+  // ---
+  // res.send(response ? response : {}); // Comment out
 });
 
 app.listen(3000, function () {
