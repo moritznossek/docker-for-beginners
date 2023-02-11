@@ -1,11 +1,14 @@
 version: '3'
 services:
-  # my-app:
+  my-app:
+    container_name: myapp
+    image: my-app
     # image: ${docker-registry}/my-app:1.0
     # image: 993179656618.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
-    # ports:
-    #   - 3000:3000
+    ports:
+      - 3000:3000
   mongodb:
+    container_name: mongodb
     image: mongo
     ports:
       - 27017:27017
