@@ -15,7 +15,7 @@ services:
     volumes:
       - mongo-data:/data/db
   mongo-express:
-    image: mongo-express
+    image: mongo-express:0.49.0
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
       - 8080:8081
