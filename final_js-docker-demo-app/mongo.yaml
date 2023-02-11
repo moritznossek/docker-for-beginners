@@ -11,8 +11,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=password
 
   mongo-express:
-    image: mongo-express:0.49.0
     container_name: mongo-express
+    image: mongo-express:0.49.0
     ports:
       - 8081:8081
     environment:
