@@ -2,14 +2,14 @@ version: '3'
 services:
   my-app:
     container_name: myapp
-    image: my-app:final
+    image: my-app
     # image: ${docker-registry}/my-app:1.0
     # image: 993179656618.dkr.ecr.us-east-1.amazonaws.com/my-app:1.0
     ports:
       - 3000:3000
   mongodb:
     container_name: mongodb
-    image: mongo
+    image: mongo:4.0 # works with mongo-express:0.49.0
     ports:
       - 27017:27017
     environment:
