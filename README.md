@@ -35,4 +35,5 @@
 
 ## <a name="Clear">(Optional) Clear everything</a>
 * `docker stop $(docker ps -a -q)` (Stop all containers)
+* `docker rm $(docker ps -a -q)` (Delete all stopped containers)
 * `docker system prune --all --volumes` (Wipe it)
