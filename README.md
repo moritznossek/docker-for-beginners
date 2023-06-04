@@ -32,3 +32,7 @@
 
 ## <a name="build">Build Docker Image</a>
 * `docker build -t my-app:1.0 .`
+
+## <a name="Clear">(Optional) Clear everything</a>
+* `docker stop $(docker ps -a -q)` (Stop all containers)
+* `docker system prune --all --volumes` (Wipe it)
