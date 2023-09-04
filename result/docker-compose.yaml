@@ -9,7 +9,7 @@ services:
       - 3000:3000
   mongodb:
     container_name: mongodb
-    image: mongo:4.0 # works with mongo-express:0.49.0
+    image: mongo:7.0.0 # works with mongo-express:0.49.0
     ports:
       - 27017:27017
     environment:
@@ -19,7 +19,7 @@ services:
       - mongo-data:/data/db
   mongo-express:
     container_name: mongo-express
-    image: mongo-express:0.49.0
+    image: mongo-express:1.0.0-alpha
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
       - 8080:8081

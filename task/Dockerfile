@@ -1,3 +1,3 @@
-# FROM node:13-alpine
+# FROM hydrogen-alpine
 
 # TODO
