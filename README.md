@@ -13,7 +13,7 @@
 ## <a name="run-local-db">Run local: Database</a>
 ### Run MongoDB Container Image
 * `docker pull mongo` || `docker pull mongo:4.0`
-* `docker run  -it -d mongo:4.0`
+* `docker run -d mongo:4.0`
 ### View Database
 * `docker pull mongo-express:0.49.0`
 ### Docker Network
