@@ -20,10 +20,10 @@
 * `docker network ls`
 * `docker network create mongo-network`
 ### MongoDB [port-forwarded, container name, network, env-vars, detached]
-* `docker run -p 27017:27017 --rm --name mongodb --net mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password -d mongo:4.0`
+* `docker run -p 27017:27017 --rm --name mongo --net mongo-network -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password -d mongo:4.0`
 * Check browser: `localhost:27017`
 ### MongoDB - Express [port-forwarded, container name, network, env-vars, detached]
-* `docker run -p 8081:8081 -d -e ME_CONFIG_MONGODB_ADMINUSER=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongodb --net mongo-network --name mongo-express --rm mongo-express:0.49.0`
+* `docker run -p 8081:8081 -d -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password -e ME_CONFIG_MONGODB_SERVER=mongo --net mongo-network --name mongo-express --rm mongo-express:1.0.2`
 * Check browser: `localhost:8081`
 
 ## <a name="docker-compose">Docker-Compose: MongoDB</a>
