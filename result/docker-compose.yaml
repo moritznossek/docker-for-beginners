@@ -10,7 +10,7 @@ services:
     ports:
       - "3000:3000"
   mongo:
-    container_name: mongodb
+    container_name: mongo
     image: mongo:7.0.0 # works with mongo-express:0.49.0
     ports:
       - "27017:27017"
