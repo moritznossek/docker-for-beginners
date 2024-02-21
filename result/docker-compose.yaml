@@ -8,12 +8,12 @@ services:
     build:
       context: .
     ports:
-      - 3000:3000
-  mongodb:
+      - "3000:3000"
+  mongo:
     container_name: mongodb
     image: mongo:7.0.0 # works with mongo-express:0.49.0
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
@@ -21,14 +21,14 @@ services:
       - mongo-data:/data/db
   mongo-express:
     container_name: mongo-express
-    image: mongo-express:1.0.0-alpha
+    image: mongo-express:1.0.2
     restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts
     ports:
-      - 8080:8081
+      - "8080:8081"
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
-      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_SERVER=mongo
 volumes:
   mongo-data:
     driver: local
